@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx
-  hosts: all
+  hosts: web_servers
   become: true
   tasks:
     - name: Update apt cache
@@ -12,8 +12,6 @@
       apt:
         name: nginx
         state: present
-
-        shell: sudo rm /etc/nginx/sites-enabled/default
 
 
     - name: Start Nginx service
