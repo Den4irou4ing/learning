@@ -1,6 +1,6 @@
 ---
 - name: Установка php на Ubuntu
-  hosts: all
+  hosts: web_servers
   become: yes
 
   tasks:
