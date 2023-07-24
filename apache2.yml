@@ -1,6 +1,6 @@
 ---
 - name: Установка Apache на Ubuntu
-  hosts: all
+  hosts: web_servers
   become: yes
 
   tasks:
