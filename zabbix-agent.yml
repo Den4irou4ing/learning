@@ -1,7 +1,7 @@
-- hosts: centos.my
+- hosts: db_servers
   vars: 
-    zabbix_server_ip: 51.250.100.40
-    zabbix_agent_ip: centos
+    zabbix_server_ip: 
+    zabbix_agent_ip: third
 
   tasks:
           #    - name: install zabbix_client
