@@ -1,6 +1,6 @@
 ---
 - name: Установка bind на Ubuntu
-  hosts: all
+  hosts: web_servers
   become: yes
 
   tasks:
