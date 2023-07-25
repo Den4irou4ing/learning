@@ -1,0 +1,27 @@
+---
+- name: Установка PostgreSQL-12 на CentOS
+  hosts: db_servers
+  become: yes
+
+  tasks:
+    - name: Добавление репозитория PostgreSQL
+      yum:
+        name:
+          - https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+        state: present
+
+    - name: Установка PostgreSQL и необходимых пакетов
+      yum:
+        name:
+          - postgresql13-server.x86_64
+          - postgresql13-contrib.x86_64
+
+    - name: Инициализация кластера баз данных PostgreSQL
+      become_user: postgres
+      command: /usr/pgsql-13/bin/postgresql-13-setup initdb
+
+    - name: Запуск PostgreSQL-13 и добавление в автозагрузку
+      systemd:
+        name: postgresql-13
+        state: started
+        enabled: yes

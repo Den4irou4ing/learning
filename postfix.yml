@@ -1,0 +1,16 @@
+---
+- name: Установка mail на Ubuntu
+  hosts: web_servers
+  become: yes
+
+  tasks:
+    - name: Обновить кэш пакетов
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Установить
+      apt:
+        name: postfix
+        state: present
+      become: yes

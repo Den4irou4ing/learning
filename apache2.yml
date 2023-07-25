@@ -1,0 +1,23 @@
+---
+- name: Установка Apache на Ubuntu
+  hosts: web_servers
+  become: yes
+
+  tasks:
+    - name: Обновить кэш пакетов
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Установить Apache
+      apt:
+        name: apache2
+        state: present
+      become: yes
+
+    - name: Уубедиться, что служба Apache запущена
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+      become: yes

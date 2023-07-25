@@ -1,0 +1,17 @@
+---
+- name: Установка php на Ubuntu
+  hosts: web_servers
+  become: yes
+
+  tasks:
+    - name: Обновить кэш пакетов
+      apt:
+        update_cache: yes
+      become: yes
+
+    - name: Установить
+      apt:
+        name: php-fpm
+        state: present
+      become: yes
+
